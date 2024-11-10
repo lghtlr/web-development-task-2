@@ -1,5 +1,5 @@
 import { HttpStatus, Injectable } from "@nestjs/common";
-import { DatasourceService } from "src/datasource /datasource.service";
+import { DatasourceService } from "src/datasource/datasource.service";
 import { User } from "./user.entity";
 
 @Injectable()
