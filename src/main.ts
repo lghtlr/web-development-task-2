@@ -13,8 +13,8 @@ async function bootstrap() {
 
     SwaggerModule.setup('api_docs', app, document) // включила доку Swagger по пути localhost:3001/api_docs
 
-    await app.listen(3001); // установила порт прослушивания 3001
-
     app.setGlobalPrefix('/api'); // установила глобальный префикс для роутов контроллеров
+    
+    await app.listen(3001); // установила порт прослушивания 3001
 }
 bootstrap();
