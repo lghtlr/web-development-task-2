@@ -1,11 +1,18 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-enum Role {
+export enum Role {
     User = 'user', // пользователь
     Admin = 'admin', // админ
 }
 
 export class User {
+
+    constructor(id: number, login: string, password_hash: string, role: Role) {
+        this.id = id,
+        this.login = login,
+        this.password_hash = password_hash,
+        this.role = role;
+    }
 
     @ApiProperty()
     id: number;

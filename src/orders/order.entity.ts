@@ -1,11 +1,18 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-enum Status {
+export enum Status {
     Completed = 'completed', // оформлен
     Paid = 'paid', // оплачен
 }
 
 export class Order {
+
+    constructor(id: number, id_course: number, id_user: number, status: Status) {
+        this.id = id,
+        this.id_course = id_course,
+        this.id_user = id_user,
+        this.status = status;
+    }
 
     @ApiProperty()
     id: number;
