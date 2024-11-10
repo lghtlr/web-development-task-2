@@ -13,11 +13,13 @@ export class OrdersController {
 
     @Get(':id')
     findOne(@Param('id') id: string) {
+        // + == конвертация строки в число
         return this.orderService.findOne(+id);
     }
 
     @Put(':id')
     update(@Param('id') id: string, @Body() updateOrder: Order) {
+        // + == конвертация строки в число
         return this.orderService.update(+id, updateOrder);
     }
 
@@ -28,6 +30,7 @@ export class OrdersController {
 
     @Delete(':id')
     remove(@Param('id') id: string) {
+        // + == конвертация строки в число
         return this.orderService.delete(+id);
     }
 }

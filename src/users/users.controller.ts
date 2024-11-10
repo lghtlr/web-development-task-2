@@ -13,11 +13,13 @@ export class UsersController {
 
     @Get(':id')
     findOne(@Param('id') id: string) {
+        // + == конвертация строки в число
         return this.userService.findOne(+id);
     }
 
     @Put(':id')
     update(@Param('id') id: string, @Body() updateUser: User) {
+        // + == конвертация строки в число
         return this.userService.update(+id, updateUser);
     }
 
@@ -28,6 +30,7 @@ export class UsersController {
 
     @Delete(':id')
     remove(@Param('id') id: string) {
+        // + == конвертация строки в число
         return this.userService.delete(+id);
     }
 }
