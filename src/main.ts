@@ -7,14 +7,14 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Courses Site API')
     .setVersion('1.0')
-    .build() // сконфигурировала сборщик документации
+    .build(); // сконфигурировала сборщик документации
+
+    app.setGlobalPrefix('/api'); // установила глобальный префикс для роутов контроллеров
 
     const document = SwaggerModule.createDocument(app, config); // создала api документацию
 
     SwaggerModule.setup('api_docs', app, document) // включила доку Swagger по пути localhost:3001/api_docs
 
-    app.setGlobalPrefix('/api'); // установила глобальный префикс для роутов контроллеров
-    
     await app.listen(3001); // установила порт прослушивания 3001
 }
 bootstrap();
