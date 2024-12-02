@@ -1,28 +1,74 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Course } from "src/courses/course.entity";
+import { User } from "src/users/user.entity";
 
 export enum Status {
     Completed = 'completed', // оформлен
     Paid = 'paid', // оплачен
 }
 
+// export class Order {
+
+//     constructor(id: number, id_course: number, id_user: number, status: Status) {
+//         this.id = id,
+//         this.id_course = id_course,
+//         this.id_user = id_user,
+//         this.status = status;
+//     }
+
+//     //
+//     @ApiProperty()
+//     id: number;
+
+//     @ApiProperty()
+//     id_course: number;
+
+//     @ApiProperty()
+//     id_user: number;
+
+//     @ApiProperty({ enum: Status, enumName: 'enum-status' })
+//     status: Status; // статус (статус заказа: оформлен, оплачен.
+// }
+
+
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  JoinColumn
+} from 'typeorm';
+
+@Entity('orders') //указываем что это не просто клаcс, а сущность в рамках TypeOrm, в БД будет храниться как таблица
 export class Order {
+  
+  @ApiProperty()
+  @PrimaryGeneratedColumn() //колонка - идентификатор, значение генерируется автоматически
+  id: number;
 
-    constructor(id: number, id_course: number, id_user: number, status: Status) {
-        this.id = id,
-        this.id_course = id_course,
-        this.id_user = id_user,
-        this.status = status;
-    }
+  @ApiProperty({ enum: Status, enumName: 'enum-status' })
+  @Column()
+  status: Status; // статус (статус заказа: оформлен, оплачен.
 
-    @ApiProperty()
-    id: number;
 
-    @ApiProperty()
-    id_course: number;
+  // https://github.com/typeorm/typeorm/blob/master/docs/many-to-one-one-to-many-relations.md
+  // @OneToMany(() => Order2, (order) => order.user)
+  // orders: Order2[]
+  @ApiProperty()
+  @ManyToOne(() => User, (user) => user.orders)
+  @JoinColumn()
+  user: User;
 
-    @ApiProperty()
-    id_user: number;
 
-    @ApiProperty({ enum: Status, enumName: 'enum-status' })
-    status: Status; // статус (статус заказа: оформлен, оплачен.
+  @ApiProperty()
+  @ManyToMany((type) => Course, (course) => course.orders) // Создадим связь многие ко многим с сущностью course и свяжем с полем orders в курсе
+  @JoinTable({
+    //join таблица с названием order_course
+    name: 'order_course',
+    joinColumn: { name: 'order_id' }, //для связи с идентификатором заказа
+    inverseJoinColumn: { name: 'course_id' }, //для связи с идентификатором курса
+  })
+  courses: Course[]; //объект, в котором будем автоматически получать все курсы из заказа
 }
