@@ -4,7 +4,7 @@ import { UsersService } from './user.service';
 import { DatasourceModule } from 'src/datasource/datasource.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user.entity';
-import { Order } from 'src/orders/order.entity';
+import { Order } from '../orders/order.entity';
 
 @Module({
     controllers: [UsersController],

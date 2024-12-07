@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Order } from "src/orders/order.entity";
+import { Order } from "../orders/order.entity";
 
 // export class Course {
 

@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Order } from "src/orders/order.entity";
+import { Order } from "../orders/order.entity";
 
 export enum Role {
     User = 'user', // пользователь
@@ -58,7 +58,7 @@ import {
     role: Role; // роль (роль пользователя: администратор, пользователь).
 
     @ApiProperty()
-    @Column()
+    // @Column({ array: true })
     @OneToMany(() => Order, (order) => order.user)
     orders: Order[];
 }

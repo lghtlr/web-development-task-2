@@ -4,8 +4,8 @@ import { OrdersService } from './order.service';
 import { DatasourceModule } from 'src/datasource/datasource.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Order } from './order.entity';
-import { User } from 'src/users/user.entity';
-import { Course } from 'src/courses/course.entity';
+import { User } from '../users/user.entity';
+import { Course } from '../courses/course.entity';
 
 @Module({
     controllers: [OrdersController],
