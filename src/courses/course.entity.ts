@@ -30,7 +30,7 @@ import {
     PrimaryGeneratedColumn,
   } from 'typeorm';
   
-  @Entity('users') //указываем что это не просто клаcс, а сущность в рамках TypeOrm, в БД будет храниться как таблица
+  @Entity('courses') //указываем что это не просто клаcс, а сущность в рамках TypeOrm, в БД будет храниться как таблица
   export class Course {
     
     @ApiProperty()
