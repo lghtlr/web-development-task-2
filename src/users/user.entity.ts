@@ -1,5 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { Order } from "../orders/order.entity";
+import { ApiProperty } from '@nestjs/swagger';
+import { Order } from '../orders/order.entity';
 
 export enum Role {
     User = 'user', // пользователь

@@ -1,6 +1,6 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { Course } from "../courses/course.entity";
-import { User } from "../users/user.entity";
+import { ApiProperty } from '@nestjs/swagger';
+import { Course } from '../courses/course.entity';
+import { User } from '../users/user.entity';
 
 export enum Status {
     Completed = 'completed', // оформлен
