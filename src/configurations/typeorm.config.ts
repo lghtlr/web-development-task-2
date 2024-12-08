@@ -7,10 +7,10 @@ const ormConfig: DataSource = new DataSource({
   database: 'leright',
   username: 'leright',
   password: 'password',
-  entities: ['src/**/*.entity{.ts,.js}'],
+  entities: ['dist/src/**/*.entity{.ts,.js}'],
   logging: true,
   synchronize: false,
   migrationsTableName: 'migrations',
-  migrations: ['src/migrations/*{.ts,.js}'],
+  migrations: ['dist/src/migrations/*{.ts,.js}'],
 });
 export default ormConfig;
