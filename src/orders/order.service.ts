@@ -9,8 +9,6 @@ import { OrderDto, StatusDto } from "./order.dto";
 @Injectable()
 export class OrdersService { 
     constructor(
-        // private readonly datasourceService: DatasourceService
-
         @InjectRepository(Order)
         // "внедряю" репозиторий Order в сервис
         private readonly orderRepository: Repository<Order>,

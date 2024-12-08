@@ -7,30 +7,6 @@ export enum Status {
     Paid = 'paid', // оплачен
 }
 
-// export class Order {
-
-//     constructor(id: number, id_course: number, id_user: number, status: Status) {
-//         this.id = id,
-//         this.id_course = id_course,
-//         this.id_user = id_user,
-//         this.status = status;
-//     }
-
-//     //
-//     @ApiProperty()
-//     id: number;
-
-//     @ApiProperty()
-//     id_course: number;
-
-//     @ApiProperty()
-//     id_user: number;
-
-//     @ApiProperty({ enum: Status, enumName: 'enum-status' })
-//     status: Status; // статус (статус заказа: оформлен, оплачен.
-// }
-
-
 import {
   Column,
   Entity,
@@ -52,7 +28,6 @@ export class Order {
   @Column()
   status: Status; // статус (статус заказа: оформлен, оплачен.
 
-
   // https://github.com/typeorm/typeorm/blob/master/docs/many-to-one-one-to-many-relations.md
   // @OneToMany(() => Order2, (order) => order.user)
   // orders: Order2[]
@@ -60,7 +35,6 @@ export class Order {
   @ManyToOne(() => User, (user) => user.orders)
   @JoinColumn()
   user: User;
-
 
   @ApiProperty()
   @ManyToMany((type) => Course, (course) => course.orders) // Создадим связь многие ко многим с сущностью course и свяжем с полем orders в курсе
