@@ -15,6 +15,7 @@ import { OrdersModule } from './orders/orders.module';
       database: 'leright',
       username: 'leright',
       password: 'password',
+      autoLoadEntities: true,
       host: 'localhost', // хост (я развернула БД локально)
       synchronize: false, // отключаю автосинхронизацию(в противном случае при каждом перезапуске БД будет создаваться заново)
       logging: 'all', // включила логирование для удобства отслеживания процессов
