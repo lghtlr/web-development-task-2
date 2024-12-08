@@ -8,8 +8,6 @@ import { Order } from "src/orders/order.entity";
 @Injectable()
 export class CoursesService  { 
     constructor(
-        //private readonly datasourceService: DatasourceService
-
         @InjectRepository(Course)
         // "внедряю" репозиторий Course в сервис
         private readonly courseRepository: Repository<Course>,

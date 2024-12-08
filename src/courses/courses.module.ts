@@ -11,7 +11,7 @@ import { Order } from '../orders/order.entity';
     providers: [CoursesService],
     imports: [
         DatasourceModule,
-        // в этом можуле использованы 2 сущности: Course, Order; их и импортируем
+        // в этом модуле использованы 2 сущности: Course, Order; их и импортируем
         TypeOrmModule.forFeature([Course, Order]),
     ],
 })
