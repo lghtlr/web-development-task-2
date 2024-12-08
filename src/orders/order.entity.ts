@@ -19,24 +19,36 @@ import {
 
 @Entity('orders') //указываем что это не просто клаcс, а сущность в рамках TypeOrm, в БД будет храниться как таблица
 export class Order {
-  
-  @ApiProperty()
+
+  @ApiProperty({ 
+      example: '1', 
+      description: 'Уникальный идентификатор',
+    })
   @PrimaryGeneratedColumn() //колонка - идентификатор, значение генерируется автоматически
   id: number;
 
-  @ApiProperty({ enum: Status, enumName: 'enum-status' })
+  @ApiProperty({ 
+      example: Status, 
+      description: 'Статус заказа',
+  })
   @Column()
   status: Status; // статус (статус заказа: оформлен, оплачен.
 
   // https://github.com/typeorm/typeorm/blob/master/docs/many-to-one-one-to-many-relations.md
   // @OneToMany(() => Order2, (order) => order.user)
   // orders: Order2[]
-  @ApiProperty()
+  @ApiProperty({ 
+    example: User, 
+    description: 'Пользователь, которому принадлежит заказ',
+  })
   @ManyToOne(() => User, (user) => user.orders)
   @JoinColumn()
   user: User;
 
-  @ApiProperty()
+  @ApiProperty({ 
+    // example: Array<Course>, 
+    description: 'Список курсов, которые входят в данный заказ',
+  })
   @ManyToMany((type) => Course, (course) => course.orders) // Создадим связь многие ко многим с сущностью course и свяжем с полем orders в курсе
   @JoinTable({
     //join таблица с названием order_course

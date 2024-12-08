@@ -11,20 +11,34 @@ import {
   
   @Entity('courses') //указываем что это не просто клаcс, а сущность в рамках TypeOrm, в БД будет храниться как таблица
   export class Course {
-    
-    @ApiProperty()
+
+    @ApiProperty({ 
+      example: '1', 
+      description: 'Уникальный идентификатор',
+    })
     @PrimaryGeneratedColumn() //колонка - идентификатор, значение генерируется автоматически
     id: number;
 
-    @ApiProperty()
+    @ApiProperty({ 
+      example: 'Курсы по мобильной разработке', 
+      description: 'Название курса',
+    })
     @Column()
     name: string;
 
+    @ApiProperty({ 
+      example: 'На данном курсе вы научитесь создавать мобильные приложения.' 
+      + 'Вы изучите все необходимые для этого интрументы: ...', 
+      description: 'Описание курса',
+    })
     @ApiProperty()
     @Column()
     description: string;
 
-    @ApiProperty()
+    @ApiProperty({ 
+      example: Order,
+      description: 'Список заказов, в которые входит данный курс',
+    })
     @ManyToMany((type) => Order, (order) => order.courses) // Создадим связь многие ко многим с сущностью order и свяжем с полем courses в заказе
     @JoinTable({
         //join таблица с названием order_course
