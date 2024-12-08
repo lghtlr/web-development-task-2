@@ -3,14 +3,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CoursesModule } from './courses/courses.module';
 import { UsersModule } from './users/users.module';
 import { OrdersModule } from './orders/orders.module';
-import { DatasourceModule } from './datasource/datasource.module';
 
 @Module({
   imports: [
     CoursesModule,
     UsersModule,
     OrdersModule,
-    DatasourceModule,
     TypeOrmModule.forRoot({
       type: 'postgres', // тип подключаемой БД
       port: 5432, // порт
