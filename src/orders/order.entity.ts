@@ -50,11 +50,5 @@ export class Order {
     description: 'Список курсов, которые входят в данный заказ',
   })
   @ManyToMany((type) => Course, (course) => course.orders) // Создадим связь многие ко многим с сущностью course и свяжем с полем orders в курсе
-  @JoinTable({
-    //join таблица с названием order_course
-    name: 'order_course',
-    joinColumn: { name: 'order_id' }, //для связи с идентификатором заказа
-    inverseJoinColumn: { name: 'course_id' }, //для связи с идентификатором курса
-  })
   courses: Course[]; //объект, в котором будем автоматически получать все курсы из заказа
 }

@@ -28,10 +28,8 @@ export class OrdersService {
             case StatusDto.Paid:
                 order.status = Status.Paid;
         };
-        order.user = await this.userRepository.findOne({
-            relations: {
-                orders: true,
-            },
+        order.user = await this.userRepository.findOneBy({
+            id: orderDto.id_user,
         });
         const cources = await this.courseRepository.findBy({
             // получаю массив Course по id
@@ -86,7 +84,4 @@ export class OrdersService {
         
     }
 
-    delete(id: number) {
-        this.orderRepository.delete({ id }); // удалю объект Order из БД
-    }
  }

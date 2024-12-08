@@ -35,10 +35,4 @@ export class OrdersController {
         return this.orderService.create(createOrder);
     }
 
-    @ApiOperation({ summary: 'Удаление заказа по id' }) // операция для сваггера
-    @Delete(':id')
-    remove(@Param('id') id: string) {
-        // + == конвертация строки в число
-        return this.orderService.delete(+id);
-    }
 }
