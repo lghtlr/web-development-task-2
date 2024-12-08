@@ -2,8 +2,10 @@ import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common"
 import { UsersService } from "./user.service";
 import { User } from "./user.entity";
 import { UserDto } from "./user.dto";
+import { ApiTags } from "@nestjs/swagger";
 
 @Controller('users')
+@ApiTags('Пользователи') // заголовок раздела в сваггере
 export class UsersController {
     constructor(private readonly userService: UsersService) { }
 
